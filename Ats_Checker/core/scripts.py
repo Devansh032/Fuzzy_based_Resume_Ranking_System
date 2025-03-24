@@ -3,7 +3,6 @@ import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import json
 
-# Sample candidate data
 candidate_data_x = {
     "status": True,
     "message": "python Developer 1",
@@ -56,7 +55,6 @@ candidate_data_x = {
     }
 }
 
-# Define required skills for the position with weights
 job_requirements_x = {
     "Python": 1.0,
     "Data Science and Analytics": 0.9,
@@ -75,7 +73,6 @@ job_requirements_x = {
 
 
 
-# Function to calculate skill score
 def calculate_skill_score(skills_data, job_reqs):
     # Define fuzzy membership values
     membership_values = {
@@ -115,7 +112,6 @@ def calculate_skill_score(skills_data, job_reqs):
     else:
         return 0
 
-# Function to calculate project relevance
 def calculate_project_relevance(project_categories, job_position):
     # Define relevance scores for different project categories based on job position
     if "python developer" in job_position.lower() :
@@ -196,7 +192,6 @@ def fuzzy_candidate_Scoring() :
 
     return candidate_scoring
 
-# Process the candidate data
 def process_candidate(candidate_data:dict,job_position,job_requirements,calculate_skill_score,calculate_project_relevance,fuzzy_candidate_Scoring):
     # Extract data
     print(candidate_data)
