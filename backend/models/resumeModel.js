@@ -30,7 +30,7 @@ const resumeSchema = new Schema({
     resume_pdf : {
         file_id : {
             type : mongoose.Schema.Types.ObjectId,
-            ref : "fs.files" //GridFs reference
+            ref : "fs.files" 
         },
         file_name : {
             type : String,
@@ -42,6 +42,6 @@ const resumeSchema = new Schema({
     }
 });
 
-const Resume = model("resume",resumeSchema);
+const resumeModel = mongoose.models.user || model("resume",resumeSchema);
 
-module.exports = Resume;
+export default resumeModel;

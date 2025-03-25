@@ -4,6 +4,12 @@ import './Add.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+interface MyModel {
+    id: number;
+    name: string;
+    // Add other fields based on your Django model
+  }
+
 const Add : React.FC< {url:string}> = ({url}) => {
 
     const [jobDescription,setJobDescription] = useState<string> ("1");
@@ -24,7 +30,7 @@ const Add : React.FC< {url:string}> = ({url}) => {
         if(pdfFile){
             formData.append('resume',pdfFile);
         }
-        const response = await axios.post(`${url}/api/resume/`,formData);
+        const response = await axios.post(`${url}/api/resume/addResume`,formData);
         console.log(response);
         if(response.data.status){
             toast.success(response.data.message);
@@ -40,8 +46,7 @@ const Add : React.FC< {url:string}> = ({url}) => {
                 <div className="add-pdf-upload flex-col">
                     <p>Select Job Description</p>
                     <select onChange={(e) => setJobDescription(e.target.value)} required>
-                        <option value='1'>Job 1</option>
-                        <option value='2'>Job 2</option> 
+                        const jobDescription = 
                     </select>
                 </div>
                 <div className="add-pdf-upload flex-col">

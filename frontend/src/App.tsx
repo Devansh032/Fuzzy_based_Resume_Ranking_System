@@ -6,7 +6,8 @@ import Navbar from "./components copy/Navbar/Navbar";
 import Sidebar from "./components copy/Sidebar/Sidebar";
 import Add from "./pages/Add/Add";
 import Addjob from "./pages/Addjob/Addjob";
-
+import Listresume from "./pages/Listresume/Listresume.tsx";
+import Listjob from "./pages/ListJob/Listjob.tsx";
 
 const App = () => {
 
@@ -22,8 +23,8 @@ const App = () => {
         <Routes>
           <Route path="/Addresume" element ={<Add url={url}/>}/>
           <Route path="/Addjob" element ={<Addjob url={url}/>}/>
-          <Route path="/Listresume" element ={<Add url={url}/>}/>
-          <Route path="/Listjob" element ={<Add url={url}/>}/>
+          {/* <Route path="/Listresume" element ={<Listresume url={url}/>}/>
+          <Route path="/Listjob" element ={<Listjob url={url}/>}/> */}
         </Routes>
       </div>  
     </div>    
