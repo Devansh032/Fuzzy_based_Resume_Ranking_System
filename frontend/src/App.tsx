@@ -11,7 +11,7 @@ import Listjob from "./pages/ListJob/Listjob.tsx";
 
 const App = () => {
 
-  const url = "http://127.0.0.1:8000";
+  const url = "http://localhost:4000";
 
   return (
     <div>
@@ -21,8 +21,8 @@ const App = () => {
       <div className="app-content">
         <Sidebar />
         <Routes>
-          <Route path="/Addresume" element ={<Add url={url}/>}/>
-          <Route path="/Addjob" element ={<Addjob url={url}/>}/>
+          <Route path="/addresume" element={<Add url={url} />} caseSensitive />
+          <Route path="/addjob" element ={<Addjob url={url}/>} caseSensitive />
           {/* <Route path="/Listresume" element ={<Listresume url={url}/>}/>
           <Route path="/Listjob" element ={<Listjob url={url}/>}/> */}
         </Routes>

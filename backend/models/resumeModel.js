@@ -1,6 +1,5 @@
-const {Schema,model, default: mongoose} = require("mongoose");
-
-const resumeSchema = new Schema({
+import {mongoose } from 'mongoose';
+const resumeSchema = new mongoose.Schema({
     candidate_name : {
         type : String,
         required : true
@@ -12,14 +11,16 @@ const resumeSchema = new Schema({
     phone : {
         type : String,
     },
-    skills : {
-        type : [String]
+    rank:{
+        type : String,
     },
+    skills: {
+        low: [String],
+        medium: [String],
+        high: [String]
+      },
     experience_years : {
         type : Number
-    },
-    education : {
-        type : String
     },
     certifications : {
         type : [String]
@@ -42,6 +43,6 @@ const resumeSchema = new Schema({
     }
 });
 
-const resumeModel = mongoose.models.user || model("resume",resumeSchema);
+const resumeModel = mongoose.models.resume || mongoose.model("resume",resumeSchema);
 
 export default resumeModel;

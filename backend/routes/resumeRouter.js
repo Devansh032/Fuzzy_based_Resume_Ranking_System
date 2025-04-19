@@ -1,21 +1,33 @@
 import express from 'express';
 import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
 import addResume from '../Controllers/resumeController.js';
-
 const resumeRouter = express.Router();
 
-//Image Storage Engine
+const uploadDir = 'upload_resume';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
-    destination:"upload_job_desc",
-    filename : (req,res,cb) => {
-        return cb(null,`${Date.now()}${file.originalname}`);
+    destination: uploadDir, 
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`);
     }
 });
 
-const upload = multer({storage:storage});
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype === 'application/pdf') {
+            cb(null, true);
+        } else {
+            cb(new Error('Only PDF files are allowed'), false);
+        }
+    }
+});
 
-resumeRouter.post("/addResume",upload.single("file"),addResume);
-// jobRouter.get("/list",);
-
+resumeRouter.post('/addResume', upload.single('resume'), addResume);
 
 export default resumeRouter;

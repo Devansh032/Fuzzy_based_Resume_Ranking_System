@@ -20,5 +20,12 @@
     "path": "^0.12.7"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "nodemonConfig": {
+    "ignore": [
+      "temp_resume.json",
+      "upload_resume/*"
+    ]
+  }
+
 }

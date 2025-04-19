@@ -20,8 +20,9 @@ const Addjob : React.FC< {url:string}> = ({url}) => {
         if(jobPdfFile){
             formData.append('job_description',jobPdfFile);
         }
-
-        const response = await axios.post(`${url}/api/resume/`,formData);
+        console.log("✅ Request frontend reached /addjob route!"); // Debug log
+        const response = await axios.post(`${url}/api/jobs/addjob`,formData);
+        console.log(response);
         if(response.data.success){
             toast.success(response.data.message);
         }
